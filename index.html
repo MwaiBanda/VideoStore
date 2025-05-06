@@ -1,0 +1,98 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .content {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        button {
+            background-color: #1e1d1de3; 
+            border: none;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 50%;
+        }
+        #count {
+            color: #1a1a1a; 
+            margin-left: 25px;
+            margin-right: 25px;
+            font-size: 16px;
+        }
+      
+      
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div >
+            <h3>Banda Video Store</h3>
+            <div class="column">
+
+               <video id="video" width="600" height="350" loop preload="auto" video controls>
+                <source id="videoSource" src="https://m8-final-bucket.s3.us-east-1.amazonaws.com/13439846_1920_1080_25fps.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>            
+              <div class="row">
+                <button id="plus">
+                    <
+                </button>
+                <span id="count"></span>
+                <button id="minus">
+                    >
+                </button>
+            </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+<script defer>
+    let count = 0;
+    var sources = [
+        "https://m8-final-bucket.s3.us-east-1.amazonaws.com/13439846_1920_1080_25fps.mp4",
+        "https://m8-final-bucket.s3.us-east-1.amazonaws.com/13432587_3840_2160_30fps.mp4",
+        "https://m8-final-bucket.s3.us-east-1.amazonaws.com/12981408_3840_2160_25fps.mp4",
+        "https://m8-final-bucket.s3.us-east-1.amazonaws.com/13489700_3840_2160_30fps.mp4"
+    ]
+    const source = document.getElementById('videoSource');
+    const video = document.getElementById('video');
+
+    document.getElementById("plus").addEventListener("click", (e) => {
+        count += 1
+        if (count > 3) {
+            count = 0
+        }
+        source.src = sources[count];
+        video.load();
+        video.play();
+    });
+
+    document.getElementById("minus").addEventListener("click", (e) => {
+        count -= 1
+        if (count < 0) {
+            count = 3
+        }
+        source.src = sources[count];
+        video.load();
+        video.play();
+    });
+</script>
+</html>
