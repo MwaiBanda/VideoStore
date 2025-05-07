@@ -17,5 +17,5 @@ func main() {
 			"https://m8-final-bucket.s3.us-east-1.amazonaws.com/13489700_3840_2160_30fps.mp4",
 		})
 	})
-	e.Logger.Fatal(e.Start(":80"))
+	e.Logger.Fatal(e.Start(":1323"))
 }
