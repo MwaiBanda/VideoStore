@@ -94,5 +94,11 @@
         video.load();
         video.play();
     });
+
+    window.addEventListener("load", (e) => {
+      fetch("http://ec2-34-204-87-69.compute-1.amazonaws.com:1323/").then(e => {
+        console.log(e)
+      })
+    })
 </script>
 </html>

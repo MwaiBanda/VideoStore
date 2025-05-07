@@ -2,13 +2,16 @@ package main
 
 import (
 	"net/http"
-	
+
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 
 func main() {
 	e := echo.New()
+	e.Use(middleware.CORS())
+
 	e.GET("/", func(c echo.Context) error {
 		return c.JSON(http.StatusOK, []string{
 			"https://m8-final-bucket.s3.us-east-1.amazonaws.com/13439846_1920_1080_25fps.mp4",
